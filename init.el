@@ -51,8 +51,8 @@
 (load-theme 'ample t)
 (global-linum-mode t) ;; enable line numbers globally
 (require 'doom-modeline)
-(doom-modeline-init)
-(ido-mode 1)
+;(doom-modeline-init)
+;(ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (global-set-key (kbd "M-o") 'other-window)
