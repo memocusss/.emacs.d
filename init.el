@@ -50,8 +50,8 @@
 (setq inhibit-startup-echo-area-message t)
 (load-theme 'ample t)
 (global-linum-mode t) ;; enable line numbers globally
-;(require 'doom-modeline)
-;(doom-modeline-init)
+;;(require 'doom-modeline)
+;;(doom-modeline-init)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
