@@ -23,17 +23,15 @@
     all-the-icons
     neotree
     doom-modeline
+    doom-themes
     flatland-theme
     zenburn-theme
     helm-themes
-    inkpot-theme
     web-mode
     magit
     use-package
-    monokai-theme
     org
     snippet
-    dracula-theme
     restart-emacs
     ample-theme
     ))
@@ -46,16 +44,20 @@
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
 (require 'better-defaults)
+(require 'doom-themes)
 (setq inhibit-startup-message t) ;; hide the startup message
 (setq inhibit-startup-echo-area-message t)
-(load-theme 'ample t)
-(global-linum-mode t) ;; enable line numbers globally
+(global-linum-mode t)
+(global-hl-line-mode -1)
+(load-theme 'doom-one t)
 (require 'doom-modeline)
 (doom-modeline-init)
+(doom-themes-neotree-config)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (global-set-key (kbd "M-o") 'other-window)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; ORG MODE CONFIGURATION
 ;; -------------------------------------
@@ -89,7 +91,7 @@
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 
 (setq web-mode-enable-auto-pairing t)
-
+(setq web-mode-enable-current-element-highlight t)
 (setq web-mode-engines-alist
       '(("php"    . "\\.phtml\\'")
         ("blade"  . "\\.blade\\.")
@@ -136,3 +138,15 @@
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (elpy ein better-defaults ample-theme))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
