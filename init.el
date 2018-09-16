@@ -48,7 +48,6 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 (setq inhibit-startup-echo-area-message t)
 (global-linum-mode t)
-(global-hl-line-mode -1)
 (load-theme 'doom-one t)
 (require 'doom-modeline)
 (doom-modeline-init)
