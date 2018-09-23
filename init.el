@@ -34,6 +34,10 @@
     snippet
     restart-emacs
     ample-theme
+    powerline
+    company
+    company-web
+    emmet-mode
     ))
 
 (mapc #'(lambda (package)
@@ -49,14 +53,25 @@
 (setq inhibit-startup-echo-area-message t)
 (global-linum-mode t)
 (load-theme 'doom-one t)
-(require 'doom-modeline)
-(doom-modeline-init)
+(require 'powerline)
+(powerline-default-theme)
 (doom-themes-neotree-config)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (global-set-key (kbd "M-o") 'other-window)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(require 'all-the-icons)
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; HELM CONFIGURATION
+;; --------------------------------------
+(require 'helm-config)
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
+(helm-mode 1)
 
 ;; ORG MODE CONFIGURATION
 ;; -------------------------------------
@@ -76,6 +91,19 @@
             (abbrev-mode 1)
             (setq local-abbrev-table org-mode-abbrev-table)))
 
+;; NEOTREE CONFIGURATION
+;; -------------------------------------
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'icons))
+
+;; EMMET-MODE CONFIGURATION
+;; -------------------------------------
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+(add-hook 'web-mode-hook 'emmet-mode)
+
 ;; WEB-MODE CONFIGURATION
 ;; --------------------------------------
 (require 'web-mode)
@@ -89,29 +117,17 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 
-(setq web-mode-enable-auto-pairing t)
-(setq web-mode-enable-current-element-highlight t)
-(setq web-mode-engines-alist
-      '(("php"    . "\\.phtml\\'")
-        ("blade"  . "\\.blade\\.")
-        ("html"   . "\\.html\\'")
-        ("css"    . "\\.css\\'"))
-      )
+(setq web-mode-style-padding 2)
+(setq web-mode-script-padding 2)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 
-;; HELM CONFIGURATION
-;; --------------------------------------
-(require 'helm-config)
-(global-set-key (kbd "M-x") #'helm-M-x)
-(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
-(global-set-key (kbd "C-x C-f") #'helm-find-files)
-(helm-mode 1)
-
-;; NEOTREE CONFIGURATION
-;; -------------------------------------
-(require 'all-the-icons)
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-(setq neo-theme (if (display-graphic-p) 'icons))
+(require 'company-web-html)
+(define-key web-mode-map (kbd "C-'") 'company-web-html)
+(add-hook 'web-mode-hook (lambda ()
+                            (set (make-local-variable 'company-backends) '(company-web-html company-files))
+                            (company-mode t)))
 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
@@ -128,6 +144,8 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
+;; init.el ends here
+;; init.el ends here
 ;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
