@@ -97,6 +97,22 @@
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons))
 
+;; WEB-MODE CONFIGURATION
+;; --------------------------------------
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+
+(setq web-mode-style-padding 2)
+(setq web-mode-script-padding 2)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-enable-current-column-highlight t)
+(setq web-mode-enable-current-element-highlight t)
+
 ;; EMMET-MODE CONFIGURATION
 ;; -------------------------------------
 (require 'emmet-mode)
@@ -104,30 +120,13 @@
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 (add-hook 'web-mode-hook 'emmet-mode)
 
-;; WEB-MODE CONFIGURATION
+;; COMPANY CONFIGURATION
 ;; --------------------------------------
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
-
-(setq web-mode-style-padding 2)
-(setq web-mode-script-padding 2)
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
-
-(require 'company-web-html)
-(define-key web-mode-map (kbd "C-'") 'company-web-html)
-(add-hook 'web-mode-hook (lambda ()
-                            (set (make-local-variable 'company-backends) '(company-web-html company-files))
-                            (company-mode t)))
+(require 'company)
+(defun my-web-mode-hook ()
+  (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
+  )
+(add-hook 'emacs-lisp-mode-hook 'company-mode)
 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
@@ -145,17 +144,3 @@
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;; init.el ends here
-;; init.el ends here
-;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (elpy ein better-defaults ample-theme))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
