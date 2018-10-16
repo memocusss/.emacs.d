@@ -22,22 +22,17 @@
     helm
     all-the-icons
     neotree
-    doom-modeline
-    doom-themes
-    flatland-theme
-    zenburn-theme
-    helm-themes
     web-mode
     magit
     use-package
     org
     snippet
     restart-emacs
-    ample-theme
     powerline
     company
     company-web
     emmet-mode
+    all-the-icons
     ))
 
 (mapc #'(lambda (package)
@@ -48,11 +43,10 @@
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
 (require 'better-defaults)
-(require 'doom-themes)
 (setq inhibit-startup-message t) ;; hide the startup message
 (setq inhibit-startup-echo-area-message t)
 (global-linum-mode t)
-(load-theme 'doom-one t)
+(load-theme 'material t)
 (require 'powerline)
 (powerline-default-theme)
 (doom-themes-neotree-config)
@@ -64,6 +58,7 @@
 (require 'all-the-icons)
 (require 'yasnippet)
 (yas-global-mode 1)
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
 
 ;; HELM CONFIGURATION
 ;; --------------------------------------
@@ -85,7 +80,7 @@
 (define-abbrev-table 'org-mode-abbrev-table())
 (snippet-with-abbrev-table
  'org-mode-abbrev-table
- ("cbox" . "[ ]"))
+ ("cbox" . "-[ ]"))
 (add-hook 'org-mode-hook
           (lambda ()
             (abbrev-mode 1)
@@ -100,6 +95,7 @@
 ;; WEB-MODE CONFIGURATION
 ;; --------------------------------------
 (require 'web-mode)
+(add-hook 'web-mode-hook 'company-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
@@ -127,6 +123,8 @@
   (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
   )
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
+(add-hook 'emmet-mode-hook 'company-mode)
+(add-hook 'web-mode-hook 'company-mode)
 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
