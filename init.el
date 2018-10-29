@@ -49,7 +49,6 @@
 (load-theme 'material t)
 (require 'powerline)
 (powerline-default-theme)
-(doom-themes-neotree-config)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
