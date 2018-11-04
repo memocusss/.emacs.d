@@ -33,6 +33,8 @@
     company-web
     emmet-mode
     all-the-icons
+    beacon
+    atom-one-dark-theme
     ))
 
 (mapc #'(lambda (package)
@@ -46,7 +48,7 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 (setq inhibit-startup-echo-area-message t)
 (global-linum-mode t)
-(load-theme 'material t)
+(load-theme 'atom-one-dark t)
 (require 'powerline)
 (powerline-default-theme)
 (ido-mode 1)
@@ -58,6 +60,7 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
+(beacon-mode 1)
 
 ;; HELM CONFIGURATION
 ;; --------------------------------------
@@ -89,7 +92,7 @@
 ;; -------------------------------------
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
-(setq neo-theme (if (display-graphic-p) 'icons))
+(setq neo-theme (if (display-graphic-p) 'arrows))
 
 ;; WEB-MODE CONFIGURATION
 ;; --------------------------------------
@@ -124,6 +127,7 @@
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 (add-hook 'emmet-mode-hook 'company-mode)
 (add-hook 'web-mode-hook 'company-mode)
+(add-hook 'css-mode-hook 'company-mode)
 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
@@ -141,3 +145,20 @@
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
 ;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("adf5275cc3264f0a938d97ded007c82913906fc6cd64458eaae6853f6be287ce" default)))
+ '(package-selected-packages
+   (quote
+    (atom-one-dark-theme beacon web-mode use-package snippet restart-emacs py-autopep8 powerline neotree material-theme magit helm flycheck emmet-mode elpy ein company-web better-defaults all-the-icons))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
