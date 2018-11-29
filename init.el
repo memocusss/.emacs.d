@@ -35,6 +35,7 @@
     all-the-icons
     beacon
     atom-one-dark-theme
+    projectile
     ))
 
 (mapc #'(lambda (package)
@@ -55,7 +56,6 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (global-set-key (kbd "M-o") 'other-window)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (require 'all-the-icons)
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -82,7 +82,7 @@
 (define-abbrev-table 'org-mode-abbrev-table())
 (snippet-with-abbrev-table
  'org-mode-abbrev-table
- ("cbox" . "-[ ]"))
+ ("cbox" . "- [ ] "))
 (add-hook 'org-mode-hook
           (lambda ()
             (abbrev-mode 1)
@@ -92,7 +92,7 @@
 ;; -------------------------------------
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
-(setq neo-theme (if (display-graphic-p) 'arrows))
+(setq neo-theme (if (display-graphic-p) 'icons))
 
 ;; WEB-MODE CONFIGURATION
 ;; --------------------------------------
@@ -134,15 +134,17 @@
 (elpy-enable)
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
+(setq elpy-rpc-python-command "/usr/bin/python")
 
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-;; enable autopep8 formatting on save
+;; enable autopep8 formatting on save and delete trailing whitespace
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; init.el ends here
 (custom-set-variables
@@ -152,7 +154,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("adf5275cc3264f0a938d97ded007c82913906fc6cd64458eaae6853f6be287ce" default)))
+    ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "adf5275cc3264f0a938d97ded007c82913906fc6cd64458eaae6853f6be287ce" default)))
  '(package-selected-packages
    (quote
     (atom-one-dark-theme beacon web-mode use-package snippet restart-emacs py-autopep8 powerline neotree material-theme magit helm flycheck emmet-mode elpy ein company-web better-defaults all-the-icons))))
