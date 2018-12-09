@@ -70,6 +70,10 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (helm-mode 1)
 
+;;MU4E CONFUIGURATION
+;;--------------------------------------
+
+
 ;; ORG MODE CONFIGURATION
 ;; -------------------------------------
 (require 'org)
@@ -147,20 +151,3 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "adf5275cc3264f0a938d97ded007c82913906fc6cd64458eaae6853f6be287ce" default)))
- '(package-selected-packages
-   (quote
-    (atom-one-dark-theme beacon web-mode use-package snippet restart-emacs py-autopep8 powerline neotree material-theme magit helm flycheck emmet-mode elpy ein company-web better-defaults all-the-icons))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
