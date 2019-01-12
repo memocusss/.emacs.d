@@ -6,7 +6,7 @@
 (require 'package)
 
 (add-to-list 'package-archives
-       '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 
 (package-initialize)
 (when (not package-archive-contents)
@@ -36,6 +36,7 @@
     beacon
     atom-one-dark-theme
     projectile
+    paradox
     ))
 
 (mapc #'(lambda (package)
@@ -60,6 +61,8 @@
 (yas-global-mode 1)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (beacon-mode 1)
+(require 'paradox)
+(paradox-enable)
 
 ;; HELM CONFIGURATION
 ;; --------------------------------------
@@ -68,10 +71,6 @@
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (helm-mode 1)
-
-;;MU4E CONFUIGURATION
-;;--------------------------------------
-
 
 ;; ORG MODE CONFIGURATION
 ;; -------------------------------------
@@ -121,6 +120,7 @@
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
 (add-hook 'web-mode-hook 'emmet-mode)
 
+
 ;; COMPANY CONFIGURATION
 ;; --------------------------------------
 (require 'company)
@@ -157,7 +157,8 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (request-deferred request pyvenv magit-popup ivy highlight-indentation helm-core git-commit ghub find-file-in-project company web-mode use-package snippet restart-emacs py-autopep8 projectile powerline neotree material-theme magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon atom-one-dark-theme all-the-icons))))
+    (request-deferred request pyvenv magit-popup ivy highlight-indentation helm-core git-commit ghub find-file-in-project company web-mode use-package snippet restart-emacs py-autopep8 projectile powerline neotree material-theme magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon atom-one-dark-theme all-the-icons)))
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
