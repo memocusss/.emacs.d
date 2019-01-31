@@ -36,7 +36,6 @@
     beacon
     atom-one-dark-theme
     projectile
-    paradox
     ))
 
 (mapc #'(lambda (package)
@@ -61,8 +60,6 @@
 (yas-global-mode 1)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (beacon-mode 1)
-(require 'paradox)
-(paradox-enable)
 
 ;; HELM CONFIGURATION
 ;; --------------------------------------

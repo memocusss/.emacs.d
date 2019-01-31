@@ -1,2 +1,2 @@
 ;;; -*- no-byte-compile: t -*-
-(define-package "atom-one-dark-theme" "20190107.1621" "Atom One Dark color theme" 'nil :commit "8714ebcb8f35a4a07fa98666eee2727f860da53a" :authors '(("Jonathan Chu" . "me@jonathanchu.is")) :maintainer '("Jonathan Chu" . "me@jonathanchu.is") :url "https://github.com/jonathanchu/atom-one-dark-theme")
+(define-package "atom-one-dark-theme" "20190107.1621" "Atom One Dark color theme" 'nil :commit "f8441a3e495962df84bd649ca0366d1473ac741c" :authors '(("Jonathan Chu" . "me@jonathanchu.is")) :maintainer '("Jonathan Chu" . "me@jonathanchu.is") :url "https://github.com/jonathanchu/atom-one-dark-theme")
