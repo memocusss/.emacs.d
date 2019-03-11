@@ -1,3 +1,0 @@
-cd .emacs.d/
-git add *
-git commit
