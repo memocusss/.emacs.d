@@ -17,7 +17,6 @@
     ein
     elpy
     flycheck
-    material-theme
     py-autopep8
     helm
     all-the-icons
@@ -28,14 +27,14 @@
     org
     snippet
     restart-emacs
-    powerline
     company
     company-web
     emmet-mode
     all-the-icons
     beacon
-    atom-one-dark-theme
     projectile
+    solarized-theme
+    wanderlust
     ))
 
 (mapc #'(lambda (package)
@@ -49,9 +48,6 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 (setq inhibit-startup-echo-area-message t)
 (global-linum-mode t)
-(load-theme 'atom-one-dark t)
-(require 'powerline)
-(powerline-default-theme)
 (ido-mode 1)
 (setq ido-enable-flex-matching t)
 (global-set-key (kbd "M-o") 'other-window)
@@ -60,6 +56,7 @@
 (yas-global-mode 1)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (beacon-mode 1)
+(load-theme 'solarized-light 't)
 
 ;; HELM CONFIGURATION
 ;; --------------------------------------
@@ -99,6 +96,7 @@
 (add-hook 'web-mode-hook 'company-mode)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
 
@@ -154,8 +152,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (request-deferred request pyvenv magit-popup ivy highlight-indentation helm-core git-commit ghub find-file-in-project company web-mode use-package snippet restart-emacs py-autopep8 projectile powerline neotree material-theme magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon atom-one-dark-theme all-the-icons)))
- '(paradox-github-token t))
+    (w32-browser wanderlust web-mode use-package snippet restart-emacs py-autopep8 projectile neotree magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon all-the-icons))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
