@@ -34,7 +34,6 @@
     beacon
     projectile
     solarized-theme
-    wanderlust
     ))
 
 (mapc #'(lambda (package)
@@ -152,7 +151,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (w32-browser wanderlust web-mode use-package snippet restart-emacs py-autopep8 projectile neotree magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon all-the-icons))))
+    (w32-browser web-mode use-package snippet restart-emacs py-autopep8 projectile neotree magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon all-the-icons))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
