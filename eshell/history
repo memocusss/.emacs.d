@@ -1,0 +1,10 @@
+git --global user.name
+git --global user.name memocusss
+git --user.name memocusss
+git config user.name
+git config user.name memocusss
+git config user.email mehmetcelem@gmail.com
+git config
+git config user.name
+git config user.email
+exit

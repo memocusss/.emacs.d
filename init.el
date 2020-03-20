@@ -34,12 +34,24 @@
     beacon
     projectile
     solarized-theme
+    leuven-theme
     ))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
       (package-install package)))
       myPackages)
+
+;; START SERVER
+(require 'server)
+(unless (server-running-p)
+  (cond
+   ((eq system-type 'windows-nt)
+    (setq server-auth-dir "~\\.emacs.d\\server\\"))
+   ((eq system-type 'gnu/linux)
+    (setq server-auth-dir "~/.emacs.d/server/")))
+  (setq server-name "emacs-server-file")
+  (server-start))
 
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
@@ -55,7 +67,7 @@
 (yas-global-mode 1)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (beacon-mode 1)
-(load-theme 'solarized-light 't)
+(load-theme 'leuven-dark 't)
 
 ;; HELM CONFIGURATION
 ;; --------------------------------------
@@ -87,7 +99,8 @@
 ;; -------------------------------------
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
-(setq neo-theme (if (display-graphic-p) 'icons))
+(setq neo-theme 'arrow)
+
 
 ;; WEB-MODE CONFIGURATION
 ;; --------------------------------------
@@ -131,7 +144,7 @@
 (elpy-enable)
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
-(setq elpy-rpc-python-command "/usr/bin/python")
+(setq elpy-rpc-python-command "python")
 
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
@@ -151,7 +164,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (w32-browser web-mode use-package snippet restart-emacs py-autopep8 projectile neotree magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon all-the-icons))))
+    (leuven-theme w32-browser web-mode use-package snippet restart-emacs py-autopep8 projectile neotree magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon all-the-icons))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
