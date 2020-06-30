@@ -34,24 +34,14 @@
     beacon
     projectile
     solarized-theme
-    leuven-theme
+    zoom
+    buffer-move
     ))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
       (package-install package)))
       myPackages)
-
-;; START SERVER
-(require 'server)
-(unless (server-running-p)
-  (cond
-   ((eq system-type 'windows-nt)
-    (setq server-auth-dir "~\\.emacs.d\\server\\"))
-   ((eq system-type 'gnu/linux)
-    (setq server-auth-dir "~/.emacs.d/server/")))
-  (setq server-name "emacs-server-file")
-  (server-start))
 
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
@@ -67,7 +57,30 @@
 (yas-global-mode 1)
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 (beacon-mode 1)
-(load-theme 'leuven-dark 't)
+(load-theme 'solarized-light 't)
+(set-default-font "Hack 11")
+
+;; BUFFER MOVE CONFIGURATION
+;; --------------------------------------
+(global-set-key (kbd "<C-M-up>")     'buf-move-up)
+(global-set-key (kbd "<C-M-down>")   'buf-move-down)
+(global-set-key (kbd "<C-M-left>")   'buf-move-left)
+(global-set-key (kbd "<C-M-right>")  'buf-move-right)
+(setq buffer-move-stay-after-swap t)
+
+;; ZOOM CONFIGURATION
+;; --------------------------------------
+(zoom-mode t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (buffer-move zoom leuven-theme w32-browser web-mode use-package snippet restart-emacs py-autopep8 projectile neotree magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon all-the-icons)))
+ '(zoom-size (quote (0.618 . 0.618))))
+
 
 ;; HELM CONFIGURATION
 ;; --------------------------------------
@@ -157,14 +170,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (leuven-theme w32-browser web-mode use-package snippet restart-emacs py-autopep8 projectile neotree magit helm flycheck emmet-mode elpy ein company-web better-defaults beacon all-the-icons))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -15,7 +15,7 @@ Handle the --restart-emacs-desktop command line argument.
 The value of the argument is the desktop file from which the frames should be
 restored.  IGNORED are ignored.
 
-\(fn &rest IGNORED)" nil nil)
+\(fn &rest İGNORED)" nil nil)
 
 (add-to-list 'command-switch-alist '("--restart-emacs-desktop" . restart-emacs-handle-command-line-args))
 

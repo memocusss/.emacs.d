@@ -58,7 +58,7 @@ accept it or skip it.
 (autoload 'emmet-wrap-with-markup "emmet-mode" "\
 Wrap region with markup.
 
-\(fn WRAP-WITH)" t nil)
+\(fn WRAP-WİTH)" t nil)
 
 (autoload 'emmet-next-edit-point "emmet-mode" "\
 

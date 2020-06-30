@@ -20,7 +20,7 @@
 (autoload 'company-web-html "company-web-html" "\
 `company-mode' completion back-end for `html-mode' and `web-mode'.
 
-\(fn COMMAND &optional ARG &rest IGNORED)" t nil)
+\(fn COMMAND &optional ARG &rest İGNORED)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-web-html" '("company-web-html-")))
 
@@ -33,7 +33,7 @@
 (autoload 'company-web-jade "company-web-jade" "\
 `company-mode' completion back-end for `jade-mode'.
 
-\(fn COMMAND &optional ARG &rest IGNORED)" t nil)
+\(fn COMMAND &optional ARG &rest İGNORED)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-web-jade" '("company-web-jade-")))
 
@@ -46,7 +46,7 @@
 (autoload 'company-web-slim "company-web-slim" "\
 `company-mode' completion back-end for `slim-mode'.
 
-\(fn COMMAND &optional ARG &rest IGNORED)" t nil)
+\(fn COMMAND &optional ARG &rest İGNORED)" t nil)
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "company-web-slim" '("company-web-slim-")))
 
